@@ -13,6 +13,7 @@ $(document).keypress(function() {
 });
 
 function nextSquare() {
+    userChosenPattern = [];
     var randomNum = Math.floor(Math.random() * 4);
     var randomChosenColor = btnColors[randomNum];
     gamePattern.push(randomChosenColor);
@@ -48,7 +49,9 @@ function animatePress(key) {
 function checkAnswer(currentLevel) {
     if (gamePattern[currentLevel] === userChosenPattern[currentLevel]) {
         console.log("success");
-        setTimeout(nextSquare, 1000);
+        if (userChosenPattern.length === gamePattern.length) {
+            setTimeout(nextSquare, 1000);
+        }
     } else {
         console.log("wrong");
         playsound("wrong");
